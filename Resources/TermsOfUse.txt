@@ -1,0 +1,18 @@
+Hey, thanks for downloading RimVibes.
+The following is just a little disclaimer and heads up.
+You should read it, but don't worry, there isn't anything evil hidden in here.
+
+RimVibes allows you to control your Spotify music without leaving the game. To do this it needs to connect to your Spotify Premium account.
+
+RimVibes does not actually need, use or store your login information, but it does have access to certain aspects of your Spotify account, such as knowing your username, the name of the device you are listening on and your previously played songs.
+
+None of this information is ever stored or sent anywhere, and is used purely to enhance the user experience.
+
+RimVibes also stores an encrypted login token on your local hard drive. This is NOT your Spotify login information, but I still consider it confidential information, so if you want to send/share this mod by copying the mod folder, be sure to delete the token file first.
+
+RimVibes connects to Spotify's web API by sending web requests. If these requests were intercepted, they could contain sensitive information about the user's spotify account or the mod's API token. Normally this is nothing to worry about, but it is your responsibility to ensure that your local Network is secure and has no unwanted eavesdroppers (don’t use Starbucks WiFi, for example).
+
+RimVibes is very careful with your account - it doesn’t modify your playlists or anything like that. However, I must put a disclaimer here; this mod is developed and tested by one person using one Spotify account, so I can’t predict every possible scenario. If under unforeseeable circumstances there was modification or damage to your Spotify playlists/saved music caused directly or indirectly by the mod, I cannot be held responsible.
+
+By pressing Accept you confirm that you have read and agreed with everything stated.
+Enjoy!

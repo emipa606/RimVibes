@@ -1,43 +1,71 @@
 # RimVibes
-RimVibes adds Spotify integration into RimWorld, allowing you to control music playback without leaving the game. In future it will have more interesting features such as music automatically changing based on in-game events, or having a disco room that changes based on what music you are playing. See the plans section for more info.
+
+![Image](https://i.imgur.com/buuPQel.png)
 
-## Quick info
-* Can be used without Spotify Premium, but works best with Premium.
-* Works on Windows and Linux, Mac support is planned soon™.
+Update of Epicguru (James B)s mod
+https://steamcommunity.com/sharedfiles/filedetails/?id=2062062427
 
-## Installation
-Press Subscribe (and Like :D) on the Steam Workshop page. For non-Steam users, download the latest release from the Releases section on Github.
+![Image](https://i.imgur.com/pufA0kM.png)
 
-## How to use
-Once you open the game with the mod installed, it should show a Terms of Use dialog that you should read and accept. Then, it will prompt you to connect your Spotify account to the mod (known as Authorizing). Simply follow the instructions and it should be fairly straightforward from there.
-Next click the button on the main menu to check that your account is connected successfully.
+	
+![Image](https://i.imgur.com/Z4GOv8H.png)
 
-![Main menu button](https://github.com/Epicguru/RimVibesMod/blob/master/Documentation%20Images/Main%20Menu%20Button.png)
+### This mod is no longer being updated
 
-If you are playing music on Spotify, it should display the name of the song.
-Now you should also see a smaller, semi-transparent button that appears in the top-right area of your screen, by default.
+**As of May 2022, I will no longer be updating my Rimworld mods until further notice,** although if a new version of Rimworld is released, I may make an effort to port my mods. The reasons for this are simple: I no longer have the time to maintain these mods, and my enjoyment from creating them has diminished over time. Thank you to everyone who enjoyed my mods and left good feedback.
+Please feel free to fork, re-upload or post patches for my mods. I ask the following if you do:
+[olist]
+-  Any fork, 'continuation' or re-upload must be open source.
+-  The fork or continuation must link back to the original (steam page or github page). I must be listed as the original author.
+[/olist]
+Thank you for your understanding!
 
-![Main menu button](https://github.com/Epicguru/RimVibesMod/blob/master/Documentation%20Images/Main%20Menu%20HUD%20Button.png)
+# Adds Spotify integration into RimWorld.
 
-Clicking this brings up the control panel, where you can do things like pause, skip etc.
+## Needs Spotify Premium to work properly
 
-## Settings
-You can control many important things from the settings menu in this mod. Simply go to Options>Mod Options>RimVibes and take a look at the options. The most important one is the Anchor and Offset settings. The Anchor changes where the control panel will appear, such as on the right or left side of the screen, and the Offset values allow you to finely adjust where you want to place the panel.
+**Allows you to control your Spotify music without leaving the game! Skip tracks, rewind, advance, and listen to the pre-built Rimworld inspired playlist.**
+Currently does not change gameplay, but in the future I plan to add disco lights that react to currently playing music :)
+ 
+**Now you can play custom music based on in-game events! Add custom songs for colonist death, hype songs for raids, happy songs for weddings etc.**
 
-## Troubleshooting
-Even though the mod is simple in functionality, there is some surprisingly complicated stuff going on in the background. Bugs are expected to come up, and you can help me fix them. Please create an issue here on Github to notify me of bugs.
+https://open.spotify.com/playlist/6kObb7fqYrNthL8c6ZB27K?si=lX8HZ__xT-SHqbxtumXuLg]Check out the 'official' playlist
+https://github.com/Epicguru/RimVibesMod/releases]Download for non-Steam users.
 
-## How to fix…
-### Connected but no authority
-This means that everything is working but you haven’t given Authority to RimVibes. Press the Authorize button and follow the instructions in the browser window that opens.
 
-### Disconnected
-This should generally never happen (by design). It means that the process that the mod launches behind the scene has crashed, or never started. You can re-launch the process by pressing Relaunch. If it crashes repeatedly, please submit a bug report.
 
-### Not responding
-The internal process has been launched but is not responding to requests. This may be caused by a Firewall, so check your firewall settings (uses ports 7868 and 7869).
+    - Works on Windows and Linux. Mac support coming soon.
+    - Only works properly with a Spotify Premium account. Without premium, all it does it display the currently playing song. This is not my choice, it's Spotify that enforces this.
+    - **You must start playing music from the Spotify app/desktop app before you can control it inside the mod. This is a bug in Spotify, not the mod.**
 
-## Technical stuff
-Nerd stuff. I can't post the source for this mod because it could expose sensitive API key data, or expose the method that I use to encrypt client tokens. Having said that, it isn't too difficult to get hold of my API key if you try hard enough, but please don't ruin the fun for everyone :).
-If you experience delay when pressing buttons, it may be due to the limit of API requests that I am allowed to make, which I can't fix or control.
-The permissions that I use to control your spotify account are `user-modify-playback-state` and `user-read-playback-state`. That means that I don't have access to personal info.
+
+
+When you install the mod it will give you instructions to link your Spotify account. It is quite straightforward, but comment with any issues so I can help you.
+Please also comment with any good songs that I should add to the 'official' playlist.
+  
+## Known issues
+
+
+
+    - **Once a song or playlist starts playing because of an event, it wont return to the previous songs once the event is over.**
+    - **You must start playing music from the Spotify app before you can control it from the mod.**
+    - **Sometimes the mod gets out of sync (displays wrong song name for a few seconds).**
+    - **Often slighty incorrect song art is displayed (it uses album cover rather than song art).**
+
+
+
+This is a WIP mod. I plan to add many more features and functionality, such as sharing your playlists or having the music react to in-game events.
+See the store page for all plans.
+
+![Image](https://i.imgur.com/PwoNOj4.png)
+
+
+
+-  See if the the error persists if you just have this mod and its requirements active.
+-  If not, try adding your other mods until it happens again.
+-  Post your error-log using https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib and command Ctrl+F12
+-  For best support, please use the Discord-channel for error-reporting.
+-  Do not report errors by making a discussion-thread, I get no notification of that.
+-  If you have the solution for a problem, please post it to the GitHub repository.
+
+

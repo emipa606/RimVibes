@@ -1,0 +1,4 @@
+# Changelog for RimVibes
+
+1.3.1 - Updated to 1.3
+
