@@ -1,5 +1,8 @@
 # Changelog for RimVibes
 
+1.4.3 - Added plylists-selector
+
+
 1.4.2 - Removed extra files - hopefully
 
 

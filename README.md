@@ -5,6 +5,9 @@
 Update of Epicguru (James B)s mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2062062427
 
+- Opened the strings for translations
+- Added selector for choosing the playlists
+
 Community playlists
 
 
