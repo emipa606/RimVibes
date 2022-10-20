@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RiVi.CurrentModVersion>Installed mod-version: {0}</RiVi.CurrentModVersion>
+  <RiVi.CustomEvents>Change custom music events</RiVi.CustomEvents>
+  <RiVi.UiXOffset>UI X Offset: </RiVi.UiXOffset>
+  <RiVi.UiYOffset>UI Y Offset: </RiVi.UiYOffset>
+  <RiVi.ButtonXOffset>Main Menu Button X Offset:</RiVi.ButtonXOffset>
+  <RiVi.ButtonYOffset>Main Menu Button Y Offset: </RiVi.ButtonYOffset>
+  <RiVi.Debug>Launch debug window</RiVi.Debug>
+  <RiVi.UiVisibility>UI Visibility:</RiVi.UiVisibility>
+  <RiVi.Login>You can log in later by clicking the RimVibes button in the main menu.</RiVi.Login>
+  <RiVi.Welcome>Great, welcome! You need to link your Spotify account with RimVibes.</RiVi.Welcome>
+  <RiVi.Login>Okay, log in.</RiVi.Login>
+  <RiVi.NotNow>Not now.</RiVi.NotNow>
+  <RiVi.AuthFailed>Spotify authorization failed.</RiVi.AuthFailed>
+  <RiVi.NoPerm>You did not log in, or give permissions.</RiVi.NoPerm>
+  <RiVi.NoRefresh>Token could not be refreshed.</RiVi.NoRefresh>
+  <RiVi.AuthHow>You can authorize Spotify by clicking the button in the bottom right of the main menu.</RiVi.AuthHow>
+  <RiVi.UiAnchor>UI Anchor:</RiVi.UiAnchor>
+  <RiVi.Ready>Ready!</RiVi.Ready>
+  <RiVi.NotResponding>Not responding (Process not responding)</RiVi.NotResponding>
+  <RiVi.Close>Close</RiVi.Close>
+  <RiVi.Disconnected>Disconnected (Process not started)</RiVi.Disconnected>
+  <RiVi.NotAuthorized>Spotify not authorized</RiVi.NotAuthorized>
+  <RiVi.Help>Help</RiVi.Help>
+  <RiVi.Kill>Kill process</RiVi.Kill>
+  <RiVi.Authorize>Authorize</RiVi.Authorize>
+  <RiVi.TermNotAccepted>You have not accepted the terms of use yet.</RiVi.TermNotAccepted>
+  <RiVi.AcceptTermsHaveTo>You have to accept the terms to use the mod.</RiVi.AcceptTermsHaveTo>
+  <RiVi.ReviewTerms>Review terms</RiVi.ReviewTerms>
+  <RiVi.AcceptTerms>Accept terms</RiVi.AcceptTerms>
+  <RiVi.RejectTerms>Reject terms</RiVi.RejectTerms>
+  <RiVi.RejectMessage>You have rejected the terms of use. You won't be able to use the mod. If you want to accept them later, click on the button in the bottom right of main menu.</RiVi.RejectMessage>
+  <RiVi.Event>Event: </RiVi.Event>
+  <RiVi.Action>Action: </RiVi.Action>
+  <RiVi.Enabled>Enabled: </RiVi.Enabled>
+  <RiVi.Playlist>Is Playlist: </RiVi.Playlist>
+  <RiVi.Delete>Delete</RiVi.Delete>
+  <RiVi.PauseWarning>RimVibes is set to automatically pause for vanilla music. This can conflict with the Music Events system.</RiVi.PauseWarning>
+  <RiVi.SpotifyId>Put Spotify ID Here</RiVi.SpotifyId>
+  <RiVi.SpotifyIdIn>Spotify ID: </RiVi.SpotifyIdIn>
+  <RiVi.AddNew>Add New...</RiVi.AddNew>
+  <RiVi.Test>Test</RiVi.Test>
+  <RiVi.PlayPlaylist>Play playlist</RiVi.PlayPlaylist>
+  <RiVi.ViewPlaylist>View playlist</RiVi.ViewPlaylist>
+  <RiVi.Relaunch>Relaunch</RiVi.Relaunch>
+  <RiVi.Nothing>Nothing playing</RiVi.Nothing>
+  <RiVi.PlayingInfo>Playing {0} - {1} by {2}</RiVi.PlayingInfo>
+  <RiVi.NotPlaying>Not playing anything right now.</RiVi.NotPlaying>
+  <RiVi.Hide>Hide</RiVi.Hide>
+  <RiVi.OpenSettings>Open Settings</RiVi.OpenSettings>
+  <RiVi.Random>Choose Random: </RiVi.Random>
+  <RiVi.EventBased>Music based on in-game events</RiVi.EventBased>
+  <RiVi.UiScale>UI Scale ({0})</RiVi.UiScale>
+  <RiVi.SilenceVanilla>Silence vanilla music when spotify plays</RiVi.SilenceVanilla>
+  <RiVi.PauseMode>Auto Pause Mode:</RiVi.PauseMode>
+  <RiVi.PauseModeTooltip>The conditions upon which to pause Spotify music. Music is never paused if vanilla music volume is 0%. You can pause music on more specific events by using the Custom Music Events.</RiVi.PauseModeTooltip>
+  <RiVi.TermsOfUse>Hey, thanks for downloading RimVibes.
+The following is just a little disclaimer and heads up.
+You should read it, but don't worry, there isn't anything evil hidden in here.
+
+RimVibes allows you to control your Spotify music without leaving the game. To do this it needs to connect to your Spotify Premium account.
+
+RimVibes does not actually need, use or store your login information, but it does have access to certain aspects of your Spotify account, such as knowing your username, the name of the device you are listening on and your previously played songs.
+
+None of this information is ever stored or sent anywhere, and is used purely to enhance the user experience.
+
+RimVibes also stores an encrypted login token on your local hard drive. This is NOT your Spotify login information, but I still consider it confidential information, so if you want to send/share this mod by copying the mod folder, be sure to delete the token file first.
+
+RimVibes connects to Spotify's web API by sending web requests. If these requests were intercepted, they could contain sensitive information about the user's spotify account or the mod's API token. Normally this is nothing to worry about, but it is your responsibility to ensure that your local Network is secure and has no unwanted eavesdroppers (don’t use Starbucks WiFi, for example).
+
+RimVibes is very careful with your account - it doesn’t modify your playlists or anything like that. However, I must put a disclaimer here; this mod is developed and tested by one person using one Spotify account, so I can’t predict every possible scenario. If under unforeseeable circumstances there was modification or damage to your Spotify playlists/saved music caused directly or indirectly by the mod, I cannot be held responsible.
+
+By pressing Accept you confirm that you have read and agreed with everything stated.
+Enjoy!</RiVi.TermsOfUse>
+</LanguageData>

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Verse;
 
 namespace RimVibes.Utils;
 
@@ -9,10 +10,10 @@ public static class VibeExtensions
     {
         return vibe switch
         {
-            Vibe.Disconnected => "Disconnected (Process not started)",
-            Vibe.ConnectedNoAuth => "Spotify not authorized",
-            Vibe.ConnectedReady => "Ready!",
-            Vibe.NotResponding => "Not responding (Process not responding)",
+            Vibe.Disconnected => "RiVi.Disconnected".Translate(),
+            Vibe.ConnectedNoAuth => "RiVi.NotAuthorized".Translate(),
+            Vibe.ConnectedReady => "RiVi.Ready".Translate(),
+            Vibe.NotResponding => "RiVi.NotResponding".Translate(),
             _ => throw new ArgumentOutOfRangeException(nameof(vibe), vibe, null)
         };
     }

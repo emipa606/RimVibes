@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Threading;
 using Common;
 using HarmonyLib;
+using Mlie;
 using RimVibes.Components;
 using RimVibes.EventHandling;
 using RimVibes.IO;
@@ -21,6 +22,7 @@ namespace RimVibes;
 
 public class RimVibesMod : Mod
 {
+    private static string currentVersion;
     private bool runUpdateThread;
 
     private float sendPingTimer;
@@ -39,6 +41,8 @@ public class RimVibesMod : Mod
     public RimVibesMod(ModContentPack content)
         : base(content)
     {
+        currentVersion =
+            VersionFromManifest.GetVersionFromModMetaData(ModLister.GetActiveModWithIdentifier("Mlie.RimVibes"));
         Instance = this;
         Settings = GetSettings<MyModSettings>();
         //Log.Message("_____________________");
@@ -96,7 +100,7 @@ public class RimVibesMod : Mod
             //Log.Message($"RimVibes Event: {e}");
             foreach (var item in Settings.Responses.All)
             {
-                if (item == null || !item.IsEnabled || item.ActivatedUpon != e)
+                if (item is not { IsEnabled: true } || item.ActivatedUpon != e)
                 {
                     continue;
                 }
@@ -267,8 +271,9 @@ public class RimVibesMod : Mod
 
     public override void DoSettingsWindowContents(Rect rect)
     {
+        var width = 400f;
         MoveDown(7f);
-        if (Widgets.ButtonText(new Rect(rect.x, rect.y, 220f, 32f), "Change custom music events"))
+        if (Widgets.ButtonText(new Rect(rect.x, rect.y, 220f, 32f), "RiVi.CustomEvents".Translate()))
         {
             EventMusicUI.Open();
             return;
@@ -276,49 +281,62 @@ public class RimVibesMod : Mod
 
         MoveDown(40f);
         Widgets.Label(new Rect(rect.x, rect.y, rect.width, 30f),
-            new GUIContent("Auto Pause Mode:",
-                "The conditions upon which to pause Spotify music. Music is never paused if vanilla music volume is 0%. You can pause music on more specific events by using the Custom Music Events."));
+            new GUIContent("RiVi.PauseMode".Translate(),
+                "RiVi.PauseModeTooltip".Translate()));
         Widgets.Dropdown(new Rect(rect.x + 130f, rect.y, 150f, 30f), SongPauseMode.Pause_For_Tense_Song,
             value => value.ToString(), PauseModeDropdownGen, Settings.SongPauseMode.ToString().Replace('_', ' '));
         MoveDown(38f);
-        Widgets.CheckboxLabeled(new Rect(rect.x, rect.y, 280f, 30f), "Silence vanilla music when spotify plays",
+        Widgets.CheckboxLabeled(new Rect(rect.x, rect.y, width, 30f), "RiVi.SilenceVanilla".Translate(),
             ref Settings.ShouldSilenceVanillaMusic, false, null, null, true);
         MoveDown(36f);
-        Widgets.Label(new Rect(rect.x, rect.y, rect.width, 30f), $"UI Scale ({Settings.HUDScale * 100f:F0}%):");
+        Widgets.Label(new Rect(rect.x, rect.y, rect.width, 30f),
+            "RiVi.UiScale".Translate(Settings.HUDScale.ToStringPercent()));
         MoveDown(28f);
         Settings.HUDScale = Widgets.HorizontalSlider(new Rect(rect.x, rect.y, Mathf.Min(300f, rect.width), 30f),
             Settings.HUDScale, 0.5f, 2f, true, null, null, null, 0.05f);
         MoveDown(36f);
-        Widgets.Label(new Rect(rect.x, rect.y, rect.width, 30f), "UI Anchor:");
+        Widgets.Label(new Rect(rect.x, rect.y, rect.width, 30f), "RiVi.UiAnchor".Translate());
         Widgets.Dropdown(new Rect(rect.x + 130f, rect.y, 150f, 30f), HUDAnchor.Right, value => value.ToString(),
             AnchorDropdownGen, Settings.HUDAnchor.ToString());
         MoveDown(36f);
         var val = Settings.HUDOffset.x;
-        Widgets.TextFieldNumericLabeled(new Rect(rect.x, rect.y, 160f, 30f), "UI X Offset: ", ref val, ref xOffBuffer,
+        Widgets.TextFieldNumericLabeled(new Rect(rect.x, rect.y, width, 30f), "RiVi.UiXOffset".Translate(), ref val,
+            ref xOffBuffer,
             float.MinValue);
         Settings.HUDOffset.x = val;
         MoveDown(36f);
         var val2 = Settings.HUDOffset.y;
-        Widgets.TextFieldNumericLabeled(new Rect(rect.x, rect.y, 160f, 30f), "UI Y Offset: ", ref val2, ref yOffBuffer,
+        Widgets.TextFieldNumericLabeled(new Rect(rect.x, rect.y, width, 30f), "RiVi.UiYOffset".Translate(), ref val2,
+            ref yOffBuffer,
             float.MinValue);
         Settings.HUDOffset.y = val2;
         MoveDown(36f);
-        Widgets.Label(new Rect(rect.x, rect.y, rect.width, 30f), "UI Visibility:");
+        Widgets.Label(new Rect(rect.x, rect.y, rect.width, 30f), "RiVi.UiVisibility".Translate());
         Widgets.Dropdown(new Rect(rect.x + 130f, rect.y, 150f, 30f), HUDVisibility.AutoHide, value => value.ToString(),
             VisDropdownGen, Settings.HUDVisibility.ToString());
         MoveDown(36f);
         val = Settings.MainMenuButtonOffset.x;
-        Widgets.TextFieldNumericLabeled(new Rect(rect.x, rect.y, 250f, 30f), "Main Menu Button X Offset:", ref val,
+        Widgets.TextFieldNumericLabeled(new Rect(rect.x, rect.y, width, 30f), "RiVi.ButtonXOffset".Translate(), ref val,
             ref xOffBuffer2);
         Settings.MainMenuButtonOffset.x = val;
         MoveDown(36f);
         val2 = Settings.MainMenuButtonOffset.y;
-        Widgets.TextFieldNumericLabeled(new Rect(rect.x, rect.y, 250f, 30f), "Main Menu Button Y Offset: ", ref val2,
+        Widgets.TextFieldNumericLabeled(new Rect(rect.x, rect.y, width, 30f), "RiVi.ButtonYOffset".Translate(),
+            ref val2,
             ref yOffBuffer2);
         Settings.MainMenuButtonOffset.y = val2;
         MoveDown(36f);
-        Widgets.CheckboxLabeled(new Rect(rect.x, rect.y, 250f, 30f), "Launch debug window",
+        Widgets.CheckboxLabeled(new Rect(rect.x, rect.y, width, 30f), "RiVi.Debug".Translate(),
             ref Settings.LaunchDebugWindow, false, null, null, true);
+
+        if (currentVersion != null)
+        {
+            MoveDown(36f);
+            GUI.contentColor = Color.gray;
+            Widgets.Label(new Rect(rect.x, rect.y, 250f, 30f), "RiVi.CurrentModVersion".Translate(currentVersion));
+            GUI.contentColor = Color.white;
+        }
+
         base.DoSettingsWindowContents(rect);
 
         void MoveDown(float amount)

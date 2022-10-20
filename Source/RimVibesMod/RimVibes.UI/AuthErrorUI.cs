@@ -47,16 +47,16 @@ public class AuthErrorUI : Window
             doCloseButton = true;
             Text.Font = GameFont.Medium;
             Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 60f),
-                "You can log in later by clicking the RimVibes button in the main menu.");
+                "RiVi.Login".Translate());
             Text.Font = GameFont.Small;
         }
         else if (TermsUI.HasJustAccepted)
         {
             doCloseButton = false;
             Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 40f),
-                "Great, welcome! You need to link your Spotify account with RimVibes.");
+                "RiVi.Welcome".Translate());
             inRect.y += 40f;
-            var text = "Okay, log in.";
+            var text = "RiVi.Login".Translate();
             var num = Text.CalcSize(text).x + 20f;
             if (Widgets.ButtonText(new Rect(inRect.xMax - num - 10f, inRect.y, num, 30f), text))
             {
@@ -68,7 +68,7 @@ public class AuthErrorUI : Window
                 TermsUI.HasJustAccepted = false;
             }
 
-            var text2 = "Not now.";
+            var text2 = "RiVi.Authorize".Translate();
             var width2 = Text.CalcSize(text2).x + 20f;
             if (!Widgets.ButtonText(new Rect(inRect.x, inRect.y, width2, 30f), text2))
             {
@@ -81,13 +81,13 @@ public class AuthErrorUI : Window
         else
         {
             doCloseButton = true;
-            Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 30f), "Spotify authorization failed.");
+            Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 30f), "RiVi.AuthFailed".Translate());
             inRect.y += 30f;
             Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 40f),
-                fromLogin ? "You did not log in, or give permissions." : "Token could not be refreshed.");
+                fromLogin ? "RiVi.NoPerm".Translate() : "RiVi.NoRefresh".Translate());
             inRect.y += 40f;
             Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 40f),
-                "You can authorize Spotify by clicking the button in the bottom right of the main menu.");
+                "RiVi.AuthHow".Translate());
             inRect.y += 40f;
             Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 100f), reason);
         }

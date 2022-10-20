@@ -85,12 +85,7 @@ public class NetData
             return false;
         }
 
-        if (readIndex + length > rawData.Count)
-        {
-            return false;
-        }
-
-        return true;
+        return readIndex + length <= rawData.Count;
     }
 
     public NetData Write(bool b)

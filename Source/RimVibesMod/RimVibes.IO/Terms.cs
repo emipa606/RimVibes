@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using Verse;
 
@@ -33,17 +32,7 @@ public static class Terms
 
     public static string LoadTerms()
     {
-        try
-        {
-            return File.ReadAllText(Path.Combine(RimVibesMod.Instance.Content.RootDir, "Resources", "TermsOfUse.txt"));
-        }
-        catch (Exception ex)
-        {
-            Log.Error(
-                "Failed to find Terms of use file! Please verify that the mod is installed correctly and isn't missing any files.");
-            Log.Error(ex.Message);
-            return "Terms of use file not found - please re-install the mod.";
-        }
+        return "RiVi.TermsOfUse".Translate();
     }
 
     internal static void SaveAgreement()

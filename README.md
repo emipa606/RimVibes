@@ -5,6 +5,14 @@
 Update of Epicguru (James B)s mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2062062427
 
+Community playlists
+
+
+- https://open.spotify.com/playlist/46qRepmbmV0hgesx7jXfjg?si=6328b7112689418d]Music for Space Travelers by BREAKFAST BOI
+- https://open.spotify.com/playlist/1WRl2hh2YaSxTYuFwd8g3n?si=55446a5556614254]RimWorld Music to Jam to by HeftyYeti8764
+
+
+
 ![Image](https://i.imgur.com/pufA0kM.png)
 
 	
@@ -30,7 +38,6 @@ Currently does not change gameplay, but in the future I plan to add disco lights
 **Now you can play custom music based on in-game events! Add custom songs for colonist death, hype songs for raids, happy songs for weddings etc.**
 
 https://open.spotify.com/playlist/6kObb7fqYrNthL8c6ZB27K?si=lX8HZ__xT-SHqbxtumXuLg]Check out the 'official' playlist
-https://github.com/Epicguru/RimVibesMod/releases]Download for non-Steam users.
 
 
 

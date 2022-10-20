@@ -132,7 +132,7 @@ public static class HUD
         }
 
         var playbackState = instance.PlaybackState;
-        var text = playbackState.Item.Name ?? "Nothing playing";
+        var text = playbackState.Item.Name ?? "RiVi.Nothing".Translate();
         var text2 = playbackState.Item.ArtistName ?? "";
         var url = playbackState.Item.Album.HasImage ? playbackState.Item.Album.ImageURL : null;
         var imageWidth = playbackState.Item.Album.ImageWidth;
@@ -270,7 +270,7 @@ public static class HUD
         if (hUDVisibility == HUDVisibility.ManualHide)
         {
             SetFontSize(20);
-            if (GUI.Button(new Rect(rect.xMax - 24f - 5f - 60f, rect.yMax + 10f, 60f, 24f), "Hide"))
+            if (GUI.Button(new Rect(rect.xMax - 24f - 5f - 60f, rect.yMax + 10f, 60f, 24f), "RiVi.Hide".Translate()))
             {
                 IsHidden = true;
             }

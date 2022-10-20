@@ -1,4 +1,4 @@
-using System.Reflection;
+using System.Collections.Generic;
 using System.Threading;
 using Common;
 using RimVibes.Components;
@@ -62,11 +62,11 @@ public class MainUI : Window
             return;
         }
 
-        if (Widgets.ButtonText(new Rect(inRect.x, inRect.height - 34f, 110f, 30f), "Open Settings"))
+        if (Widgets.ButtonText(new Rect(inRect.x, inRect.height - 34f, 110f, 30f), "RiVi.OpenSettings".Translate()))
         {
-            var dialog_ModSettings = new Dialog_ModSettings();
-            var field = dialog_ModSettings.GetType().GetField("selMod", BindingFlags.Instance | BindingFlags.NonPublic);
-            field?.SetValue(dialog_ModSettings, RimVibesMod.Instance);
+            var dialog_ModSettings = new Dialog_ModSettings(RimVibesMod.Instance);
+            //var field = dialog_ModSettings.GetType().GetField("selMod", BindingFlags.Instance | BindingFlags.NonPublic);
+            //field?.SetValue(dialog_ModSettings, RimVibesMod.Instance);
             Find.WindowStack.Add(dialog_ModSettings);
         }
 
@@ -82,15 +82,15 @@ public class MainUI : Window
                 inRect.y += 50f;
                 var playbackState = RimVibesMod.Instance.PlaybackState;
                 var isPlaying = playbackState.IsPlaying;
-                var label2 = "Not playing anything right now.";
+                var label2 = "RiVi.NotPlaying".Translate();
                 if (isPlaying)
                 {
-                    label2 =
-                        $"Playing {(playbackState.Item.IsActual ? "" : "(?) ")}<i>{playbackState.Item.Name}</i> by <b>{playbackState.Item.ArtistName}</b>";
+                    label2 = "RiVi.PlayingInfo".Translate(playbackState.Item.IsActual ? "" : "(?) ",
+                        playbackState.Item.Name, playbackState.Item.ArtistName);
                 }
 
                 Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 34f), label2);
-                var text3 = "Relaunch";
+                var text3 = "RiVi.Relaunch".Translate();
                 var vector3 = Text.CalcSize(text3);
                 vector3.x += 20f;
                 if (Widgets.ButtonText(new Rect(inRect.width - vector3.x - 10f, inRect.y, vector3.x, 30f), text3))
@@ -106,35 +106,85 @@ public class MainUI : Window
                 }
 
                 inRect.y += 35f;
-                if (Widgets.ButtonText(new Rect(inRect.x, inRect.y, 300f, 32f), "Play 'official' playlist"))
+
+                if (Widgets.ButtonText(new Rect(inRect.x, inRect.y, 300f, 32f), "RiVi.PlayPlaylist".Translate()))
                 {
-                    RimVibesMod.TrySendExecute(delegate(NetData msg)
+                    var list = new List<FloatMenuOption>
                     {
-                        msg.Write((byte)14);
-                        msg.Write("spotify:playlist:6kObb7fqYrNthL8c6ZB27K");
-                        msg.Write(0);
-                        msg.Write(0);
-                    });
+                        new FloatMenuOption("Rimworld Inspired by Hackerman", delegate
+                            {
+                                RimVibesMod.TrySendExecute(delegate(NetData msg)
+                                {
+                                    msg.Write((byte)14);
+                                    msg.Write("spotify:playlist:6kObb7fqYrNthL8c6ZB27K");
+                                    msg.Write(0);
+                                    msg.Write(0);
+                                });
+                            },
+                            MenuOptionPriority.Default, null, null, 29f),
+                        new FloatMenuOption("Music for Space Travelers by BREAKFAST BOI", delegate
+                            {
+                                RimVibesMod.TrySendExecute(delegate(NetData msg)
+                                {
+                                    msg.Write((byte)14);
+                                    msg.Write("spotify:playlist:46qRepmbmV0hgesx7jXfjg");
+                                    msg.Write(0);
+                                    msg.Write(0);
+                                });
+                            },
+                            MenuOptionPriority.Default, null, null, 29f),
+                        new FloatMenuOption("RimWorld Music to Jam to by HeftyYeti8764", delegate
+                            {
+                                RimVibesMod.TrySendExecute(delegate(NetData msg)
+                                {
+                                    msg.Write((byte)14);
+                                    msg.Write("spotify:playlist:1WRl2hh2YaSxTYuFwd8g3n");
+                                    msg.Write(0);
+                                    msg.Write(0);
+                                });
+                            },
+                            MenuOptionPriority.Default, null, null, 29f)
+                    };
+
+                    Find.WindowStack.Add(new FloatMenu(list));
                 }
 
                 inRect.y += 36f;
-                if (Widgets.ButtonText(new Rect(inRect.x, inRect.y, 300f, 32f), "View 'official' playlist"))
+                if (Widgets.ButtonText(new Rect(inRect.x, inRect.y, 300f, 32f), "RiVi.ViewPlaylist".Translate()))
                 {
-                    Application.OpenURL(
-                        "https://open.spotify.com/playlist/6kObb7fqYrNthL8c6ZB27K?si=BVeCO9NDQjS2GsZmcLYkYA");
-                }
+                    var list = new List<FloatMenuOption>
+                    {
+                        new FloatMenuOption("Rimworld Inspired by Hackerman",
+                            delegate
+                            {
+                                Application.OpenURL(
+                                    "https://open.spotify.com/playlist/6kObb7fqYrNthL8c6ZB27K?si=lX8HZ__xT-SHqbxtumXuLg");
+                            },
+                            MenuOptionPriority.Default, null, null, 29f),
+                        new FloatMenuOption("Music for Space Travelers by BREAKFAST BOI",
+                            delegate
+                            {
+                                Application.OpenURL(
+                                    "https://open.spotify.com/playlist/46qRepmbmV0hgesx7jXfjg?si=6328b7112689418d");
+                            },
+                            MenuOptionPriority.Default, null, null, 29f),
+                        new FloatMenuOption("RimWorld Music to Jam to by HeftyYeti8764",
+                            delegate
+                            {
+                                Application.OpenURL(
+                                    "https://open.spotify.com/playlist/1WRl2hh2YaSxTYuFwd8g3n?si=55446a5556614254");
+                            },
+                            MenuOptionPriority.Default, null, null, 29f)
+                    };
 
-                inRect.y += 36f;
-                if (Widgets.ButtonText(new Rect(inRect.x, inRect.y, 300f, 32f), "Suggest song for playlist (Comment)"))
-                {
-                    SteamUtility.OpenUrl("https://steamcommunity.com/sharedfiles/filedetails/?id=2062062427");
+                    Find.WindowStack.Add(new FloatMenu(list));
                 }
 
                 break;
             }
             case Vibe.ConnectedNoAuth:
             {
-                var text = "Help";
+                var text = "RiVi.Help".Translate();
                 var vector = Text.CalcSize(text);
                 vector.x += 20f;
                 if (Widgets.ButtonText(new Rect(inRect.width - vector.x, inRect.y, vector.x, 30f), text))
@@ -142,7 +192,7 @@ public class MainUI : Window
                     Application.OpenURL("https://github.com/Epicguru/RimVibesMod/tree/master#how-to-fix");
                 }
 
-                var text4 = "Authorize";
+                var text4 = "RiVi.Authorize".Translate();
                 var vector4 = Text.CalcSize(text4);
                 vector4.x += 20f;
                 if (Widgets.ButtonText(new Rect(inRect.width - vector.x - vector4.x - 10f, inRect.y, vector4.x, 30f),
@@ -159,7 +209,7 @@ public class MainUI : Window
             }
             case Vibe.Disconnected:
             {
-                var text = "Help";
+                var text = "RiVi.Help".Translate();
                 var vector = Text.CalcSize(text);
                 vector.x += 20f;
                 if (Widgets.ButtonText(new Rect(inRect.width - vector.x, inRect.y, vector.x, 30f), text))
@@ -167,7 +217,7 @@ public class MainUI : Window
                     Application.OpenURL("https://github.com/Epicguru/RimVibesMod/blob/master/README.md");
                 }
 
-                var text3 = "Relaunch";
+                var text3 = "RiVi.Relaunch".Translate();
                 var vector3 = Text.CalcSize(text3);
                 vector3.x += 20f;
                 if (Widgets.ButtonText(new Rect(inRect.width - vector.x - vector3.x - 10f, inRect.y, vector3.x, 30f),
@@ -187,7 +237,7 @@ public class MainUI : Window
             }
             case Vibe.NotResponding:
             {
-                var text = "Help";
+                var text = "RiVi.Help".Translate();
                 var vector = Text.CalcSize(text);
                 vector.x += 20f;
                 if (Widgets.ButtonText(new Rect(inRect.width - vector.x, inRect.y, vector.x, 40f), text))
@@ -195,7 +245,7 @@ public class MainUI : Window
                     Application.OpenURL("https://github.com/Epicguru/RimVibesMod/blob/master/README.md");
                 }
 
-                var text2 = "Kill process";
+                var text2 = "RiVi.Kill".Translate();
                 var vector2 = Text.CalcSize(text2);
                 vector2.x += 20f;
                 if (Widgets.ButtonText(new Rect(inRect.width - vector.x - vector2.x - 10f, inRect.y, vector2.x, 40f),
@@ -212,11 +262,11 @@ public class MainUI : Window
     private void DrawNotAccepted(Rect inRect)
     {
         Text.Font = GameFont.Medium;
-        Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 30f), "You have not accepted the terms of use yet.");
+        Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 30f), "RiVi.TermNotAccepted".Translate());
         inRect.y += 40f;
-        Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 30f), "You have to accept the terms to use the mod.");
+        Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 30f), "RiVi.AcceptTerms".Translate());
         inRect.y += 40f;
-        var text = "Review terms";
+        var text = "RiVi.ReviewTerms".Translate();
         var vector = Text.CalcSize(text);
         vector.x += 20f;
         vector.y += 20f;

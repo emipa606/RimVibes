@@ -40,7 +40,7 @@ internal class OnVanillaSongPlay
                     anyVolume = false;
                     break;
                 case SongPauseMode.Pause_For_Tense_Song:
-                    if (lastChosenSong == null || !lastChosenSong.tense)
+                    if (lastChosenSong is not { tense: true })
                     {
                         anyVolume = false;
                     }

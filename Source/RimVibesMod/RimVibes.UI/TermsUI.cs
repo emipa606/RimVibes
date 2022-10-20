@@ -58,11 +58,12 @@ public class TermsUI : Window
         Widgets.DrawTextureFitted(new Rect(x, inRect.y, width, 75f), logoAndTitle, 1f);
         var rect = new Rect(inRect.x, inRect.y + 80f, inRect.width, inRect.height - 50f - 80f);
         Widgets.TextAreaScrollable(rect, text, ref scroll, true);
-        var acceptTerms = "Accept terms";
+        var acceptTerms = "RiVi.AcceptTerms".Translate();
         var vector = Text.CalcSize(acceptTerms);
         vector.x += 20f;
-        if (Widgets.ButtonText(new Rect(inRect.xMax - vector.x - 10f, inRect.yMax - 40f, vector.x, 30f),
-                "Accept terms"))
+        var buttonRect = new Rect(inRect.xMax - vector.x - 10f, inRect.yMax - 40f, vector.x, 30f);
+        TooltipHandler.TipRegion(buttonRect, "RiVi.AcceptTermsHaveTo".Translate());
+        if (Widgets.ButtonText(buttonRect, "RiVi.AcceptTerms".Translate()))
         {
             //Log.Message("User has accepted terms, saving...");
             Terms.SaveAgreement();
@@ -77,7 +78,7 @@ public class TermsUI : Window
             Close();
         }
 
-        if (!Widgets.ButtonText(new Rect(inRect.x, inRect.yMax - 40f, 110f, 30f), "Reject terms"))
+        if (!Widgets.ButtonText(new Rect(inRect.x, inRect.yMax - 40f, 110f, 30f), "RiVi.RejectTerms".Translate()))
         {
             return;
         }
@@ -91,10 +92,10 @@ public class TermsUI : Window
     {
         Text.Font = GameFont.Medium;
         Widgets.TextAreaScrollable(new Rect(inRect.x, inRect.y, inRect.width, inRect.height - 50f),
-            "You have rejected the terms of use. You won't be able to use the mod. If you want to accept them later, click on the button in the bottom right of main menu.",
+            "RiVi.RejectMessage".Translate(),
             ref scroll, true);
         Text.Font = GameFont.Small;
-        if (Widgets.ButtonText(new Rect(inRect.xMax - 120f, inRect.yMax - 40f, 110f, 30f), "Close"))
+        if (Widgets.ButtonText(new Rect(inRect.xMax - 120f, inRect.yMax - 40f, 110f, 30f), "RiVi.Close".Translate()))
         {
             base.Close();
         }
