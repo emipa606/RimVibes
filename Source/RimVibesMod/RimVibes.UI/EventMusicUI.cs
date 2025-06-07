@@ -127,6 +127,7 @@ public class EventMusicUI : Window
         }
 
         Widgets.EndScrollView();
+        return;
 
         void MoveDown(float amount)
         {

@@ -42,7 +42,7 @@ public class RimVibesMod : Mod
         : base(content)
     {
         currentVersion =
-            VersionFromManifest.GetVersionFromModMetaData(ModLister.GetActiveModWithIdentifier("Mlie.RimVibes"));
+            VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
         Instance = this;
         Settings = GetSettings<MyModSettings>();
         //Log.Message("_____________________");
@@ -338,6 +338,7 @@ public class RimVibesMod : Mod
         }
 
         base.DoSettingsWindowContents(rect);
+        return;
 
         void MoveDown(float amount)
         {
@@ -382,6 +383,8 @@ public class RimVibesMod : Mod
                     delegate { Settings.SongPauseMode = (SongPauseMode)item; })
             };
         }
+
+        yield break;
 
         static string getItemName(object obj)
         {

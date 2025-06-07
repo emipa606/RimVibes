@@ -5,12 +5,12 @@ using Verse;
 
 namespace RimVibes.Patches;
 
-[HarmonyPatch(typeof(LetterStack), "ReceiveLetter", typeof(Letter), typeof(string))]
+[HarmonyPatch(typeof(LetterStack), "ReceiveLetter", typeof(Letter), typeof(string), typeof(int), typeof(bool))]
 internal static class OnLetterIn
 {
     internal static bool SuppressNext;
 
-    private static void Prefix(LetterStack __instance, Letter let)
+    private static void Prefix(Letter let)
     {
         if (SuppressNext)
         {
@@ -43,7 +43,7 @@ internal static class OnLetterIn
         {
             type = EventType.Negative_Event;
         }
-        else if (let.def == LetterDefOf.NewQuest)
+        else if (let.def == DefDatabase<LetterDef>.GetNamedSilentFail("NewQuest"))
         {
             type = EventType.New_Quest;
         }

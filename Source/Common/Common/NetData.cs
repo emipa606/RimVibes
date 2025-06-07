@@ -9,7 +9,7 @@ public class NetData
 {
     private static readonly ConcurrentQueue<NetData> pool = new ConcurrentQueue<NetData>();
 
-    private readonly List<byte> rawData = new List<byte>();
+    private readonly List<byte> rawData = [];
 
     private byte[] arrayForm;
 

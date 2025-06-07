@@ -41,12 +41,7 @@ public class Decompresser
     private static bool IsExtracted(RuntimePlatform platform)
     {
         var outputFolderPath = GetOutputFolderPath(platform);
-        if (outputFolderPath == null)
-        {
-            return false;
-        }
-
-        return Directory.Exists(outputFolderPath);
+        return outputFolderPath != null && Directory.Exists(outputFolderPath);
     }
 
     private static bool HasModUpdated()

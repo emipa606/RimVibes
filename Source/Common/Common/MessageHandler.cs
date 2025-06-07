@@ -29,36 +29,22 @@ public class MessageHandler
 
     public void AddHandler(byte id, Action<NetData> processor)
     {
-        if (!processors.ContainsKey(id))
-        {
-            processors.Add(id, processor);
-        }
-        else
-        {
-            processors[id] = processor;
-        }
+        processors[id] = processor;
     }
 
     public void AddRequestHandler(byte id, Func<NetData, Action<NetData>> processor)
     {
-        if (!requestProcessors.ContainsKey(id))
-        {
-            requestProcessors.Add(id, processor);
-        }
-        else
-        {
-            requestProcessors[id] = processor;
-        }
+        requestProcessors[id] = processor;
     }
 
     private void OnMessageIn(NetData data)
     {
         var b = data.ReadByte();
-        if (processors.ContainsKey(b))
+        if (processors.TryGetValue(b, out var processor))
         {
             try
             {
-                processors[b]?.Invoke(data);
+                processor?.Invoke(data);
                 return;
             }
             catch (Exception arg)
@@ -77,11 +63,11 @@ public class MessageHandler
     private Action<NetData> OnRequestIn(NetData data)
     {
         var b = data.ReadByte();
-        if (requestProcessors.ContainsKey(b))
+        if (requestProcessors.TryGetValue(b, out var processor))
         {
             try
             {
-                return requestProcessors[b]?.Invoke(data);
+                return processor?.Invoke(data);
             }
             catch (Exception arg)
             {

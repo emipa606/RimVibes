@@ -8,12 +8,12 @@ public class Responses
 {
     private static readonly StringBuilder str = new StringBuilder();
 
-    public List<EventResponse> All = new List<EventResponse>();
+    public readonly List<EventResponse> All = [];
 
     public void Deserialize(string data)
     {
         All.Clear();
-        var array = data.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+        var array = data.Split(['|'], StringSplitOptions.RemoveEmptyEntries);
         foreach (var data2 in array)
         {
             var eventResponse = new EventResponse();

@@ -277,6 +277,7 @@ public static class HUD
         }
 
         box.normal.background = background;
+        return;
 
         void MoveDown(float amount)
         {

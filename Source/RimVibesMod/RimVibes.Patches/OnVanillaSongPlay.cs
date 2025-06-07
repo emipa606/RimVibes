@@ -24,7 +24,7 @@ internal class OnVanillaSongPlay
         {
             //Log.Message(
             //lastChosenSong.tense
-            //    ? "It is a tense song... Ooh the suspense!"
+            //    ? "It is a tense song... Ooh, the suspense!"
             //    : "It is not a tense song, just chill.");
         }
 

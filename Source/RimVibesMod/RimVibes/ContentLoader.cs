@@ -7,19 +7,19 @@ namespace RimVibes;
 [StaticConstructorOnStartup]
 internal static class ContentLoader
 {
-    public static Camera cam;
+    public static readonly Camera cam;
 
-    public static Texture2D LogoAndTitle;
+    public static readonly Texture2D LogoAndTitle;
 
-    public static Texture2D StatusNormal;
+    public static readonly Texture2D StatusNormal;
 
-    public static Texture2D StatusWarn;
+    public static readonly Texture2D StatusWarn;
 
-    public static Texture2D StatusError;
+    public static readonly Texture2D StatusError;
 
-    public static Texture2D StatusUnknown;
+    public static readonly Texture2D StatusUnknown;
 
-    public static Texture2D BinIcon;
+    public static readonly Texture2D BinIcon;
 
     static ContentLoader()
     {

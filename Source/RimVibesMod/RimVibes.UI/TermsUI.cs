@@ -57,7 +57,7 @@ public class TermsUI : Window
         var x = (inRect.width - width) * 0.5f;
         Widgets.DrawTextureFitted(new Rect(x, inRect.y, width, 75f), logoAndTitle, 1f);
         var rect = new Rect(inRect.x, inRect.y + 80f, inRect.width, inRect.height - 50f - 80f);
-        Widgets.TextAreaScrollable(rect, text, ref scroll, true);
+        Widgets.LabelScrollable(rect, text, ref scroll, true);
         var acceptTerms = "RiVi.AcceptTerms".Translate();
         var vector = Text.CalcSize(acceptTerms);
         vector.x += 20f;
@@ -91,7 +91,7 @@ public class TermsUI : Window
     private void DrawRejected(Rect inRect)
     {
         Text.Font = GameFont.Medium;
-        Widgets.TextAreaScrollable(new Rect(inRect.x, inRect.y, inRect.width, inRect.height - 50f),
+        Widgets.LabelScrollable(new Rect(inRect.x, inRect.y, inRect.width, inRect.height - 50f),
             "RiVi.RejectMessage".Translate(),
             ref scroll, true);
         Text.Font = GameFont.Small;

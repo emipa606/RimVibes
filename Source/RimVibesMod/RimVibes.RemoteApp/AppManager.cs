@@ -84,7 +84,7 @@ public class AppManager
         try
         {
             var cmd = $"chmod +x {executablePath}";
-            var text = cmd.Bash(true);
+            _ = cmd.Bash(true);
             //Log.Message($"Run permission output: {text}");
         }
         catch (Exception ex)

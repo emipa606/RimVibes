@@ -2,7 +2,7 @@ namespace RimVibes;
 
 public class Item
 {
-    public Album Album = new Album();
+    public readonly Album Album = new Album();
 
     public string ArtistName;
     public bool IsActual;

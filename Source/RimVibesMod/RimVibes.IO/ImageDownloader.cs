@@ -23,11 +23,10 @@ public static class ImageDownloader
             client.DownloadFileCompleted += OnDownloadFinished;
         }
 
-        if (urlToPath.ContainsKey(url))
+        if (urlToPath.TryGetValue(url, out var filePath))
         {
             try
             {
-                var filePath = urlToPath[url];
                 var userState = new DownloadRequest
                 {
                     OnDownloaded = onDownloaded,

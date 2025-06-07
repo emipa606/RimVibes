@@ -4,12 +4,11 @@ namespace RimVibes;
 
 public class PlaybackState
 {
+    public readonly Device Device = new Device();
+
+    public readonly Item Item = new Item();
     public int CurrentPositionMS;
-
-    public Device Device = new Device();
     public bool IsPlaying;
-
-    public Item Item = new Item();
 
     public int ProgressMS;
 

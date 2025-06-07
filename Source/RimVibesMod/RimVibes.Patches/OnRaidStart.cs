@@ -7,7 +7,7 @@ namespace RimVibes.Patches;
 [HarmonyPatch(typeof(IncidentWorker_RaidEnemy), "TryExecuteWorker")]
 internal static class OnRaidStart
 {
-    private static void Prefix(IncidentWorker_Raid __instance)
+    private static void Prefix()
     {
         //Log.Message("Enemy raid start.");
         OnLetterIn.SuppressNext = true;
